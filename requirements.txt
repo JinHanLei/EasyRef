@@ -1,0 +1,17 @@
+flask==2.3.3
+flask-cors==4.0.0
+pandas~=2.2.3
+scholarly==1.7.11
+semanticscholar~=0.10.0
+playwright~=1.52.0
+beautifulsoup4~=4.13.4
+openai~=1.78.0
+tqdm~=4.67.1
+requests~=2.32.3
+lxml==4.9.3 
+supabase~=2.17.0
+python-dotenv~=1.0.0
+pymysql~=1.1.1
+boto3~=1.39.9
+botocore~=1.39.9
+arxiv~=2.2.0

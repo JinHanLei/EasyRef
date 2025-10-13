@@ -1,0 +1,577 @@
+<!DOCTYPE html><html lang="en-US" xml:lang="en-US"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Evaluation Measures for Text Summarization
+							| COMPUTING AND INFORMATICS
+			</title>
+
+	
+<link rel="icon" href="https://www.cai.sk/ojs/public/journals/1/favicon_en_US.ico">
+<meta name="generator" content="Open Journal Systems 3.3.0.17">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.Creator.PersonalName" content="Josef Steinberger">
+<meta name="DC.Creator.PersonalName" content="Karel Ježek">
+<meta name="DC.Date.created" scheme="ISO8601" content="2012-01-26">
+<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2012-01-16">
+<meta name="DC.Date.issued" scheme="ISO8601" content="2012-01-26">
+<meta name="DC.Date.modified" scheme="ISO8601" content="2012-01-26">
+<meta name="DC.Description" xml:lang="en" content="We explain the ideas of automatic text summarization approaches and the taxonomy of summary evaluation methods. Moreover, we propose a new evaluation measure for assessing the quality of a summary. The core of the measure is covered by Latent Semantic Analysis (LSA) which can capture the main topics of a document. The summarization systems are ranked according to the similarity of the main topics of their summaries and their reference documents. Results show a high correlation between human rankings and the LSA-based evaluation measure. The measure is designed to compare a summary with its full text. It can compare a summary with a human written abstract as well; however, in this case using a standard ROUGE measure gives more precise results. Nevertheless, if abstracts are not available for a given corpus, using the LSA-based measure is an appropriate choice.">
+<meta name="DC.Format" scheme="IMT" content="application/pdf">
+<meta name="DC.Identifier" content="37">
+<meta name="DC.Identifier.pageNumber" content="251–275">
+<meta name="DC.Identifier.URI" content="https://www.cai.sk/ojs/index.php/cai/article/view/37">
+<meta name="DC.Language" scheme="ISO639-1" content="en">
+<meta name="DC.Rights" content="Copyright (c)  ">
+<meta name="DC.Rights" content="">
+<meta name="DC.Source" content="COMPUTING AND INFORMATICS">
+<meta name="DC.Source.ISSN" content="2585-8807">
+<meta name="DC.Source.Issue" content="2">
+<meta name="DC.Source.Volume" content="28">
+<meta name="DC.Source.URI" content="https://www.cai.sk/ojs/index.php/cai">
+<meta name="DC.Title" content="Evaluation Measures for Text Summarization">
+<meta name="DC.Type" content="Text.Serial.Journal">
+<meta name="DC.Type.articleType" content="Articles">
+<meta name="gs_meta_revision" content="1.1">
+<meta name="citation_journal_title" content="COMPUTING AND INFORMATICS">
+<meta name="citation_journal_abbrev" content="Comput. Inform.">
+<meta name="citation_issn" content="2585-8807"> 
+<meta name="citation_author" content="Josef Steinberger">
+<meta name="citation_author" content="Karel Ježek">
+<meta name="citation_title" content="Evaluation Measures for Text Summarization">
+<meta name="citation_language" content="en">
+<meta name="citation_date" content="2009">
+<meta name="citation_volume" content="28">
+<meta name="citation_issue" content="2">
+<meta name="citation_firstpage" content="251–275">
+<meta name="citation_lastpage" content="251–275">
+<meta name="citation_abstract_html_url" content="https://www.cai.sk/ojs/index.php/cai/article/view/37">
+<meta name="citation_pdf_url" content="https://www.cai.sk/ojs/index.php/cai/article/download/37/24">
+<link rel="alternate" type="application/atom+xml" href="https://www.cai.sk/ojs/index.php/cai/gateway/plugin/WebFeedGatewayPlugin/atom">
+<link rel="alternate" type="application/rdf+xml" href="https://www.cai.sk/ojs/index.php/cai/gateway/plugin/WebFeedGatewayPlugin/rss">
+<link rel="alternate" type="application/rss+xml" href="https://www.cai.sk/ojs/index.php/cai/gateway/plugin/WebFeedGatewayPlugin/rss2">
+	<link rel="stylesheet" href="https://www.cai.sk/ojs/index.php/cai/$$$call$$$/page/page/css?name=stylesheet" type="text/css"><link rel="stylesheet" href="https://www.cai.sk/ojs/index.php/cai/$$$call$$$/page/page/css?name=font" type="text/css"><link rel="stylesheet" href="https://www.cai.sk/ojs/lib/pkp/styles/fontawesome/fontawesome.css?v=3.3.0.17" type="text/css">
+</head>
+<body class="pkp_page_article pkp_op_view has_site_logo" dir="ltr">
+
+	<div class="pkp_structure_page">
+
+				<header class="pkp_structure_head" id="headerNavigationContainer" role="banner">
+						
+ <nav class="cmp_skip_to_content" aria-label="Jump to content links">
+	<a href="#pkp_content_main">Skip to main content</a>
+	<a href="#siteNav">Skip to main navigation menu</a>
+		<a href="#pkp_content_footer">Skip to site footer</a>
+</nav>
+
+			<div class="pkp_head_wrapper">
+
+				<div class="pkp_site_name_wrapper">
+					<button class="pkp_site_nav_toggle">
+						<span>Open Menu</span>
+					</button>
+										<div class="pkp_site_name">
+																<a href="						https://www.cai.sk/ojs/index.php/cai/index
+					" class="is_img">
+							<img src="https://www.cai.sk/ojs/public/journals/1/pageHeaderLogoImage_en_US" width="200" height="71" alt="COMPUTING AND INFORMATICS">
+						</a>
+										</div>
+				</div>
+
+				
+				<nav class="pkp_site_nav_menu" aria-label="Site Navigation">
+					<a id="siteNav"></a>
+					<div class="pkp_navigation_primary_row">
+						<div class="pkp_navigation_primary_wrapper">
+																				<ul id="navigationPrimary" class="pkp_navigation_primary pkp_nav_list">
+								<li class="">
+				<a href="https://www.cai.sk/ojs/index.php/cai/issue/current">
+					Current
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.cai.sk/ojs/index.php/cai/issue/archive">
+					Archives
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.cai.sk/ojs/index.php/cai/announcement">
+					Announcements
+				</a>
+							</li>
+								<li class="">
+				<a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="pkpDropdown0">
+					About
+				</a>
+									<ul class="dropdown-menu" aria-labelledby="pkpDropdown0">
+																					<li class="">
+									<a href="https://www.cai.sk/ojs/index.php/cai/about">
+										About the Journal
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.cai.sk/ojs/index.php/cai/about/submissions">
+										Submissions
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.cai.sk/ojs/index.php/cai/about/editorialTeam">
+										Editorial Team
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.cai.sk/ojs/index.php/cai/about/privacy">
+										Privacy Statement
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.cai.sk/ojs/index.php/cai/subscription_announcement">
+										Subscription
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.cai.sk/ojs/index.php/cai/about/contact">
+										Contact
+									</a>
+								</li>
+																		</ul>
+							</li>
+			</ul>
+
+				
+
+																						<div class="pkp_navigation_search_wrapper">
+									<a href="https://www.cai.sk/ojs/index.php/cai/search" class="pkp_search pkp_search_desktop">
+										<span class="fa fa-search" aria-hidden="true"></span>
+										Search
+									</a>
+								</div>
+													</div>
+					</div>
+					<div class="pkp_navigation_user_wrapper" id="navigationUserWrapper">
+							<ul id="navigationUser" class="pkp_navigation_user pkp_nav_list">
+								<li class="profile">
+				<a href="https://www.cai.sk/ojs/index.php/cai/user/register">
+					Register
+				</a>
+							</li>
+								<li class="profile">
+				<a href="https://www.cai.sk/ojs/index.php/cai/login">
+					Login
+				</a>
+							</li>
+										</ul>
+
+					</div>
+				</nav>
+			</div><!-- .pkp_head_wrapper -->
+		</header><!-- .pkp_structure_head -->
+
+						<div class="pkp_structure_content has_sidebar">
+			<div class="pkp_structure_main" role="main">
+				<a id="pkp_content_main"></a>
+
+<div class="page page_article">
+			<nav class="cmp_breadcrumbs" role="navigation" aria-label="You are here:">
+	<ol>
+		<li>
+			<a href="https://www.cai.sk/ojs/index.php/cai/index">
+				Home
+			</a>
+			<span class="separator">/</span>
+		</li>
+		<li>
+			<a href="https://www.cai.sk/ojs/index.php/cai/issue/archive">
+				Archives
+			</a>
+			<span class="separator">/</span>
+		</li>
+					<li>
+				<a href="https://www.cai.sk/ojs/index.php/cai/issue/view/CAI-28-2009-2">
+					Vol. 28 No. 2 (2009): Computing and Informatics
+				</a>
+				<span class="separator">/</span>
+			</li>
+				<li class="current" aria-current="page">
+			<span aria-current="page">
+									Articles
+							</span>
+		</li>
+	</ol>
+</nav>
+	
+		  	 <article class="obj_article_details">
+
+		
+	<h1 class="page_title">
+		Evaluation Measures for Text Summarization
+	</h1>
+
+	
+	<div class="row">
+		<div class="main_entry">
+
+							<section class="item authors">
+					<h2 class="pkp_screen_reader">Authors</h2>
+					<ul class="authors">
+											<li>
+							<span class="name">
+								Josef Steinberger
+							</span>
+																				</li>
+											<li>
+							<span class="name">
+								Karel Ježek
+							</span>
+																				</li>
+										</ul>
+				</section>
+			
+																					
+						
+										<section class="item abstract">
+					<h2 class="label">Abstract</h2>
+					<p>We explain the ideas of automatic text summarization approaches and the taxonomy of summary evaluation methods. Moreover, we propose a new evaluation measure for assessing the quality of a summary. The core of the measure is covered by Latent Semantic Analysis (LSA) which can capture the main topics of a document. The summarization systems are ranked according to the similarity of the main topics of their summaries and their reference documents. Results show a high correlation between human rankings and the LSA-based evaluation measure. The measure is designed to compare a summary with its full text. It can compare a summary with a human written abstract as well; however, in this case using a standard ROUGE measure gives more precise results. Nevertheless, if abstracts are not available for a given corpus, using the LSA-based measure is an appropriate choice.</p>
+				</section>
+			
+			<div class="item downloads_chart">
+	<h3 class="label">
+		Downloads
+	</h3>
+	<div class="value"><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; inset: 0px;"></iframe>
+		<canvas class="usageStatsGraph" data-object-type="Submission" data-object-id="37" style="width: 499px; height: 249px;" width="499" height="249"></canvas>
+		
+	</div>
+</div>
+
+
+																										
+						
+		</div><!-- .main_entry -->
+
+		<div class="entry_details">
+
+						
+										<div class="item galleys">
+					<h2 class="pkp_screen_reader">
+						Downloads
+					</h2>
+					<ul class="value galleys_links">
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link pdf" href="https://www.cai.sk/ojs/index.php/cai/article/view/37/24">
+
+		
+	PDF
+
+	</a>
+							</li>
+											</ul>
+				</div>
+						
+						<div class="item published">
+				<section class="sub_item">
+					<h2 class="label">
+						Published
+					</h2>
+					<div class="value">
+																			<span>2012-01-26</span>
+																	</div>
+				</section>
+							</div>
+			
+										<div class="item citation">
+					<section class="sub_item citation_display">
+						<h2 class="label">
+							How to Cite
+						</h2>
+						<div class="value">
+							<div id="citationOutput" role="region" aria-live="polite">
+								<div class="csl-bib-body">
+  <div class="csl-entry">Steinberger, J., &amp; Ježek, K. (2012). Evaluation Measures for Text Summarization. <i>COMPUTING AND INFORMATICS</i>, <i>28</i>(2), 251–275. Retrieved from https://www.cai.sk/ojs/index.php/cai/article/view/37</div>
+</div>
+							</div>
+							<div class="citation_formats">
+								<button class="cmp_button citation_formats_button" aria-controls="cslCitationFormats" aria-expanded="false" data-csl-dropdown="true">
+									More Citation Formats
+								</button>
+								<div id="cslCitationFormats" class="citation_formats_list" aria-hidden="true">
+									<ul class="citation_formats_styles">
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/acm-sig-proceedings?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/acm-sig-proceedings?submissionId=37&amp;publicationId=23&amp;return=json">
+													ACM
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/acs-nano?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/acs-nano?submissionId=37&amp;publicationId=23&amp;return=json">
+													ACS
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/apa?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/apa?submissionId=37&amp;publicationId=23&amp;return=json">
+													APA
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=37&amp;publicationId=23&amp;return=json">
+													ABNT
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/chicago-author-date?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/chicago-author-date?submissionId=37&amp;publicationId=23&amp;return=json">
+													Chicago
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/harvard-cite-them-right?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/harvard-cite-them-right?submissionId=37&amp;publicationId=23&amp;return=json">
+													Harvard
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/ieee?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/ieee?submissionId=37&amp;publicationId=23&amp;return=json">
+													IEEE
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/modern-language-association?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/modern-language-association?submissionId=37&amp;publicationId=23&amp;return=json">
+													MLA
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=37&amp;publicationId=23&amp;return=json">
+													Turabian
+												</a>
+											</li>
+																					<li>
+												<a aria-controls="citationOutput" href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/vancouver?submissionId=37&amp;publicationId=23" data-load-citation="" data-json-href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/get/vancouver?submissionId=37&amp;publicationId=23&amp;return=json">
+													Vancouver
+												</a>
+											</li>
+																			</ul>
+																			<div class="label">
+											Download Citation
+										</div>
+										<ul class="citation_formats_styles">
+																							<li>
+													<a href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/download/ris?submissionId=37&amp;publicationId=23">
+														<span class="fa fa-download"></span>
+														Endnote/Zotero/Mendeley (RIS)
+													</a>
+												</li>
+																							<li>
+													<a href="https://www.cai.sk/ojs/index.php/cai/citationstylelanguage/download/bibtex?submissionId=37&amp;publicationId=23">
+														<span class="fa fa-download"></span>
+														BibTeX
+													</a>
+												</li>
+																					</ul>
+																	</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			
+										<div class="item issue">
+
+											<section class="sub_item">
+							<h2 class="label">
+								Issue
+							</h2>
+							<div class="value">
+								<a class="title" href="https://www.cai.sk/ojs/index.php/cai/issue/view/CAI-28-2009-2">
+									Vol. 28 No. 2 (2009): Computing and Informatics
+								</a>
+							</div>
+						</section>
+					
+											<section class="sub_item">
+							<h2 class="label">
+								Section
+							</h2>
+							<div class="value">
+								Articles
+							</div>
+						</section>
+					
+									</div>
+			
+															
+						
+			
+
+		</div><!-- .entry_details -->
+	</div><!-- .row -->
+
+</article>
+
+	<div id="articlesBySameAuthorList">
+				</div>
+
+
+</div><!-- .page -->
+
+	</div><!-- pkp_structure_main -->
+
+									<div class="pkp_structure_sidebar left" role="complementary" aria-label="Sidebar">
+				 
+<div class="pkp_block block_information">
+	<h2 class="title">Information</h2>
+	<div class="content">
+		<ul>
+							<li>
+					<a href="https://www.cai.sk/ojs/index.php/cai/information/readers">
+						For Readers
+					</a>
+				</li>
+										<li>
+					<a href="https://www.cai.sk/ojs/index.php/cai/information/authors">
+						For Authors
+					</a>
+				</li>
+										<li>
+					<a href="https://www.cai.sk/ojs/index.php/cai/information/librarians">
+						For Librarians
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+<div class="pkp_block block_make_submission">
+	<h2 class="pkp_screen_reader">
+		Make a Submission
+	</h2>
+
+	<div class="content">
+		<a class="block_make_submission_link" href="https://www.cai.sk/ojs/index.php/cai/about/submissions">
+			Make a Submission
+		</a>
+	</div>
+</div>
+<div class="pkp_block block_Keywordcloud">
+	<h2 class="title">Keywords</h2>
+	<div class="content" id="wordcloud"><svg viewBox="0 0 300 200" width="100%"><g transform="translate(150,100)scale(1)"><text style="font-size: 16px; font-family: serif; fill: rgb(140, 86, 75); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(35,-13)rotate(0)">frequent itemsets mining</text><text style="font-size: 16px; font-family: serif; fill: rgb(227, 119, 194); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(7,25)rotate(60)">mape</text><text style="font-size: 16px; font-family: serif; fill: rgb(188, 189, 34); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-69,27)rotate(30)">numerical stability</text><text style="font-size: 16px; font-family: serif; fill: rgb(140, 86, 75); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(53,12)rotate(-30)">matlab</text><text style="font-size: 16px; font-family: serif; fill: rgb(31, 119, 180); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(54,-41)rotate(0)">operator overloading</text><text style="font-size: 16px; font-family: serif; fill: rgb(23, 190, 207); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(19,-61)rotate(0)">relative strength index (rsi)</text><text style="font-size: 16px; font-family: serif; fill: rgb(140, 86, 75); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(101,23)rotate(60)">stochrsi</text><text style="font-size: 16px; font-family: serif; fill: rgb(227, 119, 194); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-39,16)rotate(30)">mse rmse</text><text style="font-size: 16px; font-family: serif; fill: rgb(188, 189, 34); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(24,58)rotate(-30)">mad</text><text style="font-size: 16px; font-family: serif; fill: rgb(44, 160, 44); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(53,58)rotate(-30)">repositories</text><text style="font-size: 16px; font-family: serif; fill: rgb(255, 127, 14); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(26,-78)rotate(0)">satisfaction modeling</text><text style="font-size: 16px; font-family: serif; fill: rgb(127, 127, 127); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-65,81)rotate(0)">social aspects</text><text style="font-size: 16px; font-family: serif; fill: rgb(31, 119, 180); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-122,56)rotate(-90)">test suite</text><text style="font-size: 16px; font-family: serif; fill: rgb(227, 119, 194); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-43,-42)rotate(60)">hgs</text><text style="font-size: 16px; font-family: serif; fill: rgb(188, 189, 34); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(17,4)rotate(60)">gre</text><text style="font-size: 16px; font-family: serif; fill: rgb(23, 190, 207); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-95,-29)rotate(60)">position</text><text style="font-size: 16px; font-family: serif; fill: rgb(140, 86, 75); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-53,56)rotate(30)">scale</text><text style="font-size: 16px; font-family: serif; fill: rgb(227, 119, 194); cursor: pointer; opacity: 0.7;" class="keyword" text-anchor="middle" transform="translate(-65,-39)rotate(30)">roi</text></g></svg></div>
+
+	<script>
+		function randomColor() {
+			var cores = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
+			return cores[Math.floor(Math.random()*cores.length)];
+		}
+
+					document.addEventListener("DOMContentLoaded", function() {
+				var keywords = [{"text":"frequent itemsets mining","size":1},{"text":"mape","size":1},{"text":"colour image processing","size":1},{"text":"utomatic roundoff analysis","size":1},{"text":"numerical stability","size":1},{"text":"automatic differentiation","size":1},{"text":"matlab","size":1},{"text":"operator overloading","size":1},{"text":"stock market prediction","size":1},{"text":"rate of change (roc)","size":1},{"text":"money flow index (mfi)","size":1},{"text":"relative strength index (rsi)","size":1},{"text":"stochrsi","size":1},{"text":"ultimate oscillator","size":1},{"text":"mse rmse","size":1},{"text":"mad","size":1},{"text":"repositories","size":1},{"text":"optimal web service composition","size":1},{"text":"semantic quality","size":1},{"text":"web service composition selection","size":1},{"text":"group recommendation","size":1},{"text":"satisfaction modeling","size":1},{"text":"social aspects","size":1},{"text":"state-of-the-art","size":1},{"text":"test suite","size":1},{"text":"test suite minimization","size":1},{"text":"hgs","size":1},{"text":"gre","size":1},{"text":"non redundant hgs","size":1},{"text":"enhanced hgs","size":1},{"text":"cloud infrastructure","size":1},{"text":"mobile agents","size":1},{"text":"dominance relation","size":1},{"text":"hvs-based perceptual models","size":1},{"text":"edaphology","size":1},{"text":"fuzzy search","size":1},{"text":"hierarchical temporal memory (htm)","size":1},{"text":"temporal pooler","size":1},{"text":"rapid learning","size":1},{"text":"image explorer","size":1},{"text":"position","size":1},{"text":"scale","size":1},{"text":"and rotation-invariant pattern recognition","size":1},{"text":"semi-fragile watermarking","size":1},{"text":"roi","size":1},{"text":"jpeg2000 compression","size":1},{"text":"content integrity verification","size":1},{"text":"multi-objective evolutionary optimization","size":1},{"text":"darpa dataset","size":1},{"text":"multi-objective next release problem","size":1}];
+				var totalWeight = 0;
+				var width = 300;
+				var height = 200;
+				var transitionDuration = 200;	
+				var length_keywords = keywords.length;
+				var layout = d3.layout.cloud();
+
+				layout.size([width, height])
+					.words(keywords)
+					.fontSize(function(d)
+					{
+						return fontSize(+d.size);
+					})
+					.on('end', draw);
+				
+				var svg = d3.select("#wordcloud").append("svg")
+					.attr("viewBox", "0 0 " + width + " " + height)	
+					.attr("width", '100%');		
+				
+				function update() {
+					var words = layout.words();
+					fontSize = d3.scaleLinear().range([16, 34]);
+					if (words.length) {
+						fontSize.domain([+words[words.length - 1].size || 1, +words[0].size]);
+					}
+				}
+				
+				keywords.forEach(function(item,index){totalWeight += item.size;});
+
+				update();
+
+				function draw(words, bounds) {
+					var w = layout.size()[0],
+						h = layout.size()[1];
+
+					scaling = bounds
+						? Math.min(
+							w / Math.abs(bounds[1].x - w / 2),
+							w / Math.abs(bounds[0].x - w / 2),
+							h / Math.abs(bounds[1].y - h / 2),
+							h / Math.abs(bounds[0].y - h / 2),
+						) / 2
+						: 1;
+
+					svg
+					.append("g")
+					.attr(
+						"transform",
+						"translate(" + [w >> 1, h >> 1] + ")scale(" + scaling + ")",
+					)
+					.selectAll("text")
+						.data(words)
+					.enter().append("text")
+						.style("font-size", function(d) { return d.size + "px"; })
+						.style("font-family", 'serif')
+						.style("fill", randomColor)
+						.style('cursor', 'pointer')
+						.style('opacity', 0.7)
+						.attr('class', 'keyword')
+						.attr("text-anchor", "middle")
+						.attr("transform", function(d) {
+							return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+						}) 
+						.text(function(d) { return d.text; })
+						.on("click", function(d, i){
+							window.location = "https://www.cai.sk/ojs/index.php/cai/search?query=QUERY_SLUG".replace(/QUERY_SLUG/, encodeURIComponent(''+d.text+''));
+						})
+						.on("mouseover", function(d, i) {
+							d3.select(this).transition()
+								.duration(transitionDuration)
+								.style('font-size',function(d) { return (d.size + 3) + "px"; })
+								.style('opacity', 1);
+						})
+						.on("mouseout", function(d, i) {
+							d3.select(this).transition()
+								.duration(transitionDuration)
+								.style('font-size',function(d) { return d.size + "px"; })
+								.style('opacity', 0.7);
+						})
+						.on('resize', function() { update() });
+				}
+
+				layout.start();
+
+			});
+			</script>
+</div>
+
+			</div><!-- pkp_sidebar.left -->
+			</div><!-- pkp_structure_content -->
+
+<div class="pkp_structure_footer_wrapper" role="contentinfo">
+	<a id="pkp_content_footer"></a>
+
+	<div class="pkp_structure_footer">
+
+		
+		<div class="pkp_brand_footer" role="complementary">
+			<a href="https://www.cai.sk/ojs/index.php/cai/about/aboutThisPublishingSystem">
+				<img alt="More information about the publishing system, Platform and Workflow by OJS/PKP." src="https://www.cai.sk/ojs/templates/images/ojs_brand.png">
+			</a>
+		</div>
+	</div>
+</div><!-- pkp_structure_footer_wrapper -->
+
+</div><!-- pkp_structure_page -->
+
+<script src="https://www.cai.sk/ojs/lib/pkp/lib/vendor/components/jquery/jquery.min.js?v=3.3.0.17" type="text/javascript"></script><script src="https://www.cai.sk/ojs/lib/pkp/lib/vendor/components/jqueryui/jquery-ui.min.js?v=3.3.0.17" type="text/javascript"></script><script src="https://www.cai.sk/ojs/plugins/themes/default/js/lib/popper/popper.js?v=3.3.0.17" type="text/javascript"></script><script src="https://www.cai.sk/ojs/plugins/themes/default/js/lib/bootstrap/util.js?v=3.3.0.17" type="text/javascript"></script><script src="https://www.cai.sk/ojs/plugins/themes/default/js/lib/bootstrap/dropdown.js?v=3.3.0.17" type="text/javascript"></script><script src="https://www.cai.sk/ojs/plugins/themes/default/js/main.js?v=3.3.0.17" type="text/javascript"></script><script src="https://www.cai.sk/ojs/plugins/generic/citationStyleLanguage/js/articleCitation.js?v=3.3.0.17" type="text/javascript"></script><script src="https://d3js.org/d3.v4.js?v=3.3.0.17" type="text/javascript"></script><script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js?v=3.3.0.17" type="text/javascript"></script><script type="text/javascript">var pkpUsageStats = pkpUsageStats || {};pkpUsageStats.data = pkpUsageStats.data || {};pkpUsageStats.data.Submission = pkpUsageStats.data.Submission || {};pkpUsageStats.data.Submission[37] = {"data":{"2021":{"1":0,"2":15,"3":95,"4":50,"5":77,"6":47,"7":52,"8":52,"9":34,"10":40,"11":51,"12":32},"2022":{"1":13,"2":15,"3":13,"4":10,"5":14,"6":12,"7":17,"8":16,"9":8,"10":21,"11":36,"12":21},"2023":{"1":16,"2":13,"3":12,"4":17,"5":27,"6":35,"7":41,"8":56,"9":52,"10":61,"11":52,"12":85},"2024":{"1":128,"2":79,"3":73,"4":33,"5":19,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}},"label":"All Downloads","color":"79,181,217","total":1540};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.js?v=3.3.0.17" type="text/javascript"></script><script type="text/javascript">var pkpUsageStats = pkpUsageStats || {};pkpUsageStats.locale = pkpUsageStats.locale || {};pkpUsageStats.locale.months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];pkpUsageStats.config = pkpUsageStats.config || {};pkpUsageStats.config.chartType = "bar";</script><script src="https://www.cai.sk/ojs/plugins/generic/usageStats/js/UsageStatsFrontendHandler.js?v=3.3.0.17" type="text/javascript"></script>
+
+
+
+
+</body></html>

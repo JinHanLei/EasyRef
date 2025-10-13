@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><!--[if IEMobile]><meta http-equiv=cleartype content="on"><![endif]--><title>Evaluating the Factual Consistency of Large Language Models Through News Summarization - ACL Anthology</title><meta name="generator" content="Hugo 0.118.2"><link href="/aclicon.ico" rel="shortcut icon" type="image/x-icon"><link rel="stylesheet" href="/css/main.min.b1d14a9a8f6bb9c608ca4de9aad72a6e06945119f97951f2908522dc220e6277.css" media="screen"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"><link rel="stylesheet" href="/css/academicons.min.css"><meta content="Evaluating the Factual Consistency of Large Language Models Through News Summarization" name="citation_title"><meta content="Derek Tam" name="citation_author"><meta content="Anisha Mascarenhas" name="citation_author"><meta content="Shiyue Zhang" name="citation_author"><meta content="Sarah Kwan" name="citation_author"><meta content="Mohit Bansal" name="citation_author"><meta content="Colin Raffel" name="citation_author"><meta content="Findings of the Association for Computational Linguistics: ACL 2023" name="citation_conference_title"><meta content="2023/7" name="citation_publication_date"><meta content="https://aclanthology.org/2023.findings-acl.322.pdf" name="citation_pdf_url"><meta content="5220" name="citation_firstpage"><meta content="5255" name="citation_lastpage"><meta content="10.18653/v1/2023.findings-acl.322" name="citation_doi"><meta property="og:title" content="Evaluating the Factual Consistency of Large Language Models Through News Summarization"><meta property="og:image" content="https://aclanthology.org/thumb/2023.findings-acl.322.jpg"><meta property="og:image:alt" content="First page of paper PDF."><meta property="og:type" content="article"><meta property="og:site_name" content="ACL Anthology"><meta property="og:url" content="https://aclanthology.org/2023.findings-acl.322"><meta property="og:description" content="Derek Tam, Anisha Mascarenhas, Shiyue Zhang, Sarah Kwan, Mohit Bansal, Colin Raffel. Findings of the Association for Computational Linguistics: ACL 2023. 2023."><link rel="canonical" href="https://aclanthology.org/2023.findings-acl.322"></head><body><nav class="navbar navbar-expand-sm navbar-light bg-light bg-gradient-light shadow-sm py-0 mb-3 mb-md-4 mb-xl-5"><div id="navbar-container" class="container"><a class="navbar-brand" href="/"><img src="/images/acl-logo.svg" width="56" alt="ACL Logo">
+<span class="d-inline pl-2">ACL Anthology</span></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav flex-grow-1 pr-md-2"><li class="nav-item"><a class="nav-link" href="/posts/">News<span class="sr-only">(current)</span></a></li><li class="nav-item"><a class="nav-link" href="/faq/">FAQ<span class="sr-only">(current)</span></a></li><li class="nav-item"><a class="nav-link" href="/info/corrections/">Corrections<span class="sr-only">(current)</span></a></li><li class="nav-item"><a class="nav-link" href="/info/contrib/">Submissions<span class="sr-only">(current)</span></a></li><li class="nav-item"><a class="nav-link" href="https://github.com/acl-org/acl-anthology/"><i class="fab fa-github pr-1"></i>Github</a></li></ul><form class="form-inline my-2 my-lg-0 flex-nowrap" action="/search/?" method="get"><input id="acl-search-box" class="form-control mr-sm-2" name="q" type="search" placeholder="Search..." aria-label="Search">
+<button class="btn btn-outline-primary" type="submit"><i class="fas fa-search"></i></button></form></div></div></nav><div id="main-container" class="container"><section id="main"><div><h2 id="title"><a href="https://aclanthology.org/2023.findings-acl.322.pdf">Evaluating the Factual Consistency of Large Language Models Through News Summarization</a></h2><p class="lead"><a href="/people/d/derek-tam/">Derek Tam</a>,
+<a href="/people/a/anisha-mascarenhas/">Anisha Mascarenhas</a>,
+<a href="/people/s/shiyue-zhang/">Shiyue Zhang</a>,
+<a href="/people/s/sarah-kwan/">Sarah Kwan</a>,
+<a href="/people/m/mohit-bansal/">Mohit Bansal</a>,
+<a href="/people/c/colin-raffel/">Colin Raffel</a></p></div><hr><div class="row acl-paper-details"><div class="col col-lg-10 order-2"><div class="card bg-light mb-2 mb-lg-3"><div class="card-body acl-abstract"><h5 class="card-title">Abstract</h5><span>While large language models (LLMs) have proven to be effective on a large variety of tasks, they are also known to hallucinate information. To measure whether an LLM prefers factually consistent continuations of its input, we propose a new benchmark called FIB (Factual Inconsistency Benchmark) that focuses on the task of summarization. Specifically, our benchmark involves comparing the scores an LLM assigns to a factually consistent versus a factually inconsistent summary for an input news article. For factually consistent summaries, we use human-written reference summaries that we manually verify as factually consistent. To generate summaries that are factually inconsistent, we generate summaries from a suite of summarization models that we have manually annotated as factually inconsistent. A model’s factual consistency is then measured according to its accuracy, i.e. the proportion of documents where it assigns a higher score to the factually consistent summary. To validate the usefulness of {pasted macro ‘BENCHMARK’}, we evaluate 23 large language models ranging from 1B to 176B parameters from six different model families including BLOOM and OPT. We find that existing LLMs generally assign a higher score to factually consistent summaries than to factually inconsistent summaries. However, if the factually inconsistent summaries occur verbatim in the document, then LLMs assign a higher score to these factually inconsistent summaries than factually consistent summaries. We validate design choices in our benchmark including the scoring method and source of distractor summaries.</span></div></div><dl><dt>Anthology ID:</dt><dd>2023.findings-acl.322</dd><dt>Volume:</dt><dd><a href="/volumes/2023.findings-acl/">Findings of the Association for Computational Linguistics: ACL 2023</a></dd><dt>Month:</dt><dd>July</dd><dt>Year:</dt><dd>2023</dd><dt>Address:</dt><dd>Toronto, Canada</dd><dt>Editors:</dt><dd><a href="/people/a/anna-rogers/">Anna Rogers</a>,
+<a href="/people/j/jordan-boyd-graber/">Jordan Boyd-Graber</a>,
+<a href="/people/n/naoaki-okazaki/">Naoaki Okazaki</a></dd><dt>Venue:</dt><dd><a href="/venues/findings/">Findings</a></dd><dt>SIG:</dt><dd></dd><dt>Publisher:</dt><dd>Association for Computational Linguistics</dd><dt>Note:</dt><dd></dd><dt>Pages:</dt><dd>5220–5255</dd><dt>Language:</dt><dd></dd><dt>URL:</dt><dd><a href="https://aclanthology.org/2023.findings-acl.322">https://aclanthology.org/2023.findings-acl.322</a></dd><dt>DOI:</dt><dd><a href="https://doi.org/10.18653/v1/2023.findings-acl.322" title="To the current version of the paper by DOI">10.18653/v1/2023.findings-acl.322</a></dd><dt class="acl-button-row">Bibkey:</dt><dd class="acl-button-row"><button type="button" class="btn btn-clipboard-outside btn-secondary btn-sm" data-clipboard-target="#citePaperBibkey"><i class="far fa-clipboard"></i><span id="citePaperBibkey" class="pl-2 text-monospace">tam-etal-2023-evaluating</span></button></dd><dt>Cite (ACL):</dt><dd><span id="citeACL">Derek Tam, Anisha Mascarenhas, Shiyue Zhang, Sarah Kwan, Mohit Bansal, and Colin Raffel. 2023. <a href="https://aclanthology.org/2023.findings-acl.322">Evaluating the Factual Consistency of Large Language Models Through News Summarization</a>. In <i>Findings of the Association for Computational Linguistics: ACL 2023</i>, pages 5220–5255, Toronto, Canada. Association for Computational Linguistics.</span><button type="button" class="btn btn-clipboard btn-secondary btn-sm ml-2" data-clipboard-target="#citeACL"><i class="far fa-clipboard"></i></button></dd><dt>Cite (Informal):</dt><dd><span id="citeRichText"><a href="https://aclanthology.org/2023.findings-acl.322">Evaluating the Factual Consistency of Large Language Models Through News Summarization</a> (Tam et al., Findings 2023)</span><button type="button" class="btn btn-clipboard btn-secondary btn-sm ml-2" data-clipboard-target="#citeRichText"><i class="far fa-clipboard"></i></button></dd><dt class="acl-button-row">Copy Citation:</dt><dd class="acl-button-row"><button type="button" class="btn btn-clipboard-outside btn-secondary btn-sm" data-clipboard-target="#citeBibtexContent"><i class="far fa-clipboard pr-2"></i>BibTeX</button>
+<button type="button" class="btn btn-clipboard-outside btn-secondary btn-sm" data-clipboard-target="#citeMarkdownContent"><i class="far fa-clipboard pr-2"></i>Markdown</button>
+<button type="button" class="btn btn-clipboard-outside btn-secondary btn-sm" data-clipboard-target="#citeModsContent"><i class="far fa-clipboard pr-2"></i>MODS XML</button>
+<button type="button" class="btn btn-clipboard-outside btn-secondary btn-sm" data-clipboard-target="#citeEndnoteContent"><i class="far fa-clipboard pr-2"></i>Endnote</button>
+<button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#citeModal">More options…</button></dd><dt>PDF:</dt><dd><a href="https://aclanthology.org/2023.findings-acl.322.pdf">https://aclanthology.org/2023.findings-acl.322.pdf</a></dd><dt class="acl-button-row">Video:</dt><dd class="acl-button-row"><a href="https://aclanthology.org/2023.findings-acl.322.mp4" class="btn btn-attachment btn-sm"><i class="fas fa-video"></i>&nbsp;https://aclanthology.org/2023.findings-acl.322.mp4</a></dd></dl></div><div class="acl-paper-link-block"><a class="btn btn-primary" href="https://aclanthology.org/2023.findings-acl.322.pdf" title="Open PDF of 'Evaluating the Factual Consistency of Large Language Models Through News Summarization'"><i class="far fa-file-pdf"></i><span class="pl-2">PDF</span></a>
+<a class="btn btn-secondary" title="Open dialog for exporting citations" data-toggle="modal" data-target="#citeModal" href="#"><i class="fas fa-quote-left"></i><span class="pl-2">Cite</span></a>
+<a class="btn btn-secondary" href="https://www.semanticscholar.org/search?q=Evaluating+the+Factual+Consistency+of+Large+Language+Models+Through+News+Summarization" title="Search for 'Evaluating the Factual Consistency of Large Language Models Through News Summarization' on Semantic Scholar"><i class="ai ai-semantic-scholar"></i><span class="pl-sm-2 d-none d-sm-inline">Search</span></a>
+<a class="btn btn-attachment d-flex flex-wrap justify-content-center" href="https://aclanthology.org/2023.findings-acl.322.mp4" title="Open video for 'Evaluating the Factual Consistency of Large Language Models Through News Summarization'"><span class="align-self-center px-1"><i class="fas fa-video"></i></span>
+<span class="px-1">Video</span></a></div></div><hr><div class="modal fade" id="citeModal" tabindex="-1" role="dialog" aria-labelledby="citeModalLabel" aria-hidden="true"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="citeModalLabel">Export citation</h5><button class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span></button></div><div class="modal-body"><ul class="nav nav-tabs mb-2" id="citeFormats" role="tablist"><li class="nav-item"><a class="nav-link active" data-toggle="list" href="#citeBibtex" role="tab" aria-controls="citeBibtex" aria-selected="true">BibTeX</a></li><li class="nav-item"><a class="nav-link" data-toggle="list" href="#citeMods" role="tab" aria-controls="citeMods" aria-selected="false">MODS XML</a></li><li class="nav-item"><a class="nav-link" data-toggle="list" href="#citeEndnote" role="tab" aria-controls="citeEndnote" aria-selected="false">Endnote</a></li><li class="nav-item"><a class="nav-link" data-toggle="list" href="#citeMarkdown" role="tab" aria-controls="citeMarkdown" aria-selected="false">Preformatted</a></li></ul><div class="tab-content" id="citeFormatsContent"><div class="tab-pane active" id="citeBibtex" role="tabpanel"><pre id="citeBibtexContent" class="bg-light border p-2" style="max-height:50vh">@inproceedings{tam-etal-2023-evaluating,
+    title = "Evaluating the Factual Consistency of Large Language Models Through News Summarization",
+    author = "Tam, Derek  and
+      Mascarenhas, Anisha  and
+      Zhang, Shiyue  and
+      Kwan, Sarah  and
+      Bansal, Mohit  and
+      Raffel, Colin",
+    editor = "Rogers, Anna  and
+      Boyd-Graber, Jordan  and
+      Okazaki, Naoaki",
+    booktitle = "Findings of the Association for Computational Linguistics: ACL 2023",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.findings-acl.322",
+    doi = "10.18653/v1/2023.findings-acl.322",
+    pages = "5220--5255",
+    abstract = "While large language models (LLMs) have proven to be effective on a large variety of tasks, they are also known to hallucinate information. To measure whether an LLM prefers factually consistent continuations of its input, we propose a new benchmark called FIB (Factual Inconsistency Benchmark) that focuses on the task of summarization. Specifically, our benchmark involves comparing the scores an LLM assigns to a factually consistent versus a factually inconsistent summary for an input news article. For factually consistent summaries, we use human-written reference summaries that we manually verify as factually consistent. To generate summaries that are factually inconsistent, we generate summaries from a suite of summarization models that we have manually annotated as factually inconsistent. A model{'}s factual consistency is then measured according to its accuracy, i.e. the proportion of documents where it assigns a higher score to the factually consistent summary. To validate the usefulness of {pasted macro {`}BENCHMARK{'}}, we evaluate 23 large language models ranging from 1B to 176B parameters from six different model families including BLOOM and OPT. We find that existing LLMs generally assign a higher score to factually consistent summaries than to factually inconsistent summaries. However, if the factually inconsistent summaries occur verbatim in the document, then LLMs assign a higher score to these factually inconsistent summaries than factually consistent summaries. We validate design choices in our benchmark including the scoring method and source of distractor summaries.",
+}
+</pre><div class="modal-footer pb-1"><a class="btn btn-secondary" href="/2023.findings-acl.322.bib"><i class="fas fa-download pr-2"></i>Download as File</a>
+<button class="btn btn-clipboard btn-primary" data-clipboard-target="#citeBibtexContent"><i class="far fa-clipboard pr-2"></i>Copy to Clipboard</button></div></div><div class="tab-pane" id="citeMods" role="tabpanel"><pre id="citeModsContent" class="bg-light border p-2" style="max-height:50vh">﻿&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;modsCollection xmlns="http://www.loc.gov/mods/v3"&gt;
+&lt;mods ID="tam-etal-2023-evaluating"&gt;
+    &lt;titleInfo&gt;
+        &lt;title&gt;Evaluating the Factual Consistency of Large Language Models Through News Summarization&lt;/title&gt;
+    &lt;/titleInfo&gt;
+    &lt;name type="personal"&gt;
+        &lt;namePart type="given"&gt;Derek&lt;/namePart&gt;
+        &lt;namePart type="family"&gt;Tam&lt;/namePart&gt;
+        &lt;role&gt;
+            &lt;roleTerm authority="marcrelator" type="text"&gt;author&lt;/roleTerm&gt;
+        &lt;/role&gt;
+    &lt;/name&gt;
+    &lt;name type="personal"&gt;
+        &lt;namePart type="given"&gt;Anisha&lt;/namePart&gt;
+        &lt;namePart type="family"&gt;Mascarenhas&lt;/namePart&gt;
+        &lt;role&gt;
+            &lt;roleTerm authority="marcrelator" type="text"&gt;author&lt;/roleTerm&gt;
+        &lt;/role&gt;
+    &lt;/name&gt;
+    &lt;name type="personal"&gt;
+        &lt;namePart type="given"&gt;Shiyue&lt;/namePart&gt;
+        &lt;namePart type="family"&gt;Zhang&lt;/namePart&gt;
+        &lt;role&gt;
+            &lt;roleTerm authority="marcrelator" type="text"&gt;author&lt;/roleTerm&gt;
+        &lt;/role&gt;
+    &lt;/name&gt;
+    &lt;name type="personal"&gt;
+        &lt;namePart type="given"&gt;Sarah&lt;/namePart&gt;
+        &lt;namePart type="family"&gt;Kwan&lt;/namePart&gt;
+        &lt;role&gt;
+            &lt;roleTerm authority="marcrelator" type="text"&gt;author&lt;/roleTerm&gt;
+        &lt;/role&gt;
+    &lt;/name&gt;
+    &lt;name type="personal"&gt;
+        &lt;namePart type="given"&gt;Mohit&lt;/namePart&gt;
+        &lt;namePart type="family"&gt;Bansal&lt;/namePart&gt;
+        &lt;role&gt;
+            &lt;roleTerm authority="marcrelator" type="text"&gt;author&lt;/roleTerm&gt;
+        &lt;/role&gt;
+    &lt;/name&gt;
+    &lt;name type="personal"&gt;
+        &lt;namePart type="given"&gt;Colin&lt;/namePart&gt;
+        &lt;namePart type="family"&gt;Raffel&lt;/namePart&gt;
+        &lt;role&gt;
+            &lt;roleTerm authority="marcrelator" type="text"&gt;author&lt;/roleTerm&gt;
+        &lt;/role&gt;
+    &lt;/name&gt;
+    &lt;originInfo&gt;
+        &lt;dateIssued&gt;2023-07&lt;/dateIssued&gt;
+    &lt;/originInfo&gt;
+    &lt;typeOfResource&gt;text&lt;/typeOfResource&gt;
+    &lt;relatedItem type="host"&gt;
+        &lt;titleInfo&gt;
+            &lt;title&gt;Findings of the Association for Computational Linguistics: ACL 2023&lt;/title&gt;
+        &lt;/titleInfo&gt;
+        &lt;name type="personal"&gt;
+            &lt;namePart type="given"&gt;Anna&lt;/namePart&gt;
+            &lt;namePart type="family"&gt;Rogers&lt;/namePart&gt;
+            &lt;role&gt;
+                &lt;roleTerm authority="marcrelator" type="text"&gt;editor&lt;/roleTerm&gt;
+            &lt;/role&gt;
+        &lt;/name&gt;
+        &lt;name type="personal"&gt;
+            &lt;namePart type="given"&gt;Jordan&lt;/namePart&gt;
+            &lt;namePart type="family"&gt;Boyd-Graber&lt;/namePart&gt;
+            &lt;role&gt;
+                &lt;roleTerm authority="marcrelator" type="text"&gt;editor&lt;/roleTerm&gt;
+            &lt;/role&gt;
+        &lt;/name&gt;
+        &lt;name type="personal"&gt;
+            &lt;namePart type="given"&gt;Naoaki&lt;/namePart&gt;
+            &lt;namePart type="family"&gt;Okazaki&lt;/namePart&gt;
+            &lt;role&gt;
+                &lt;roleTerm authority="marcrelator" type="text"&gt;editor&lt;/roleTerm&gt;
+            &lt;/role&gt;
+        &lt;/name&gt;
+        &lt;originInfo&gt;
+            &lt;publisher&gt;Association for Computational Linguistics&lt;/publisher&gt;
+            &lt;place&gt;
+                &lt;placeTerm type="text"&gt;Toronto, Canada&lt;/placeTerm&gt;
+            &lt;/place&gt;
+        &lt;/originInfo&gt;
+        &lt;genre authority="marcgt"&gt;conference publication&lt;/genre&gt;
+    &lt;/relatedItem&gt;
+    &lt;abstract&gt;While large language models (LLMs) have proven to be effective on a large variety of tasks, they are also known to hallucinate information. To measure whether an LLM prefers factually consistent continuations of its input, we propose a new benchmark called FIB (Factual Inconsistency Benchmark) that focuses on the task of summarization. Specifically, our benchmark involves comparing the scores an LLM assigns to a factually consistent versus a factually inconsistent summary for an input news article. For factually consistent summaries, we use human-written reference summaries that we manually verify as factually consistent. To generate summaries that are factually inconsistent, we generate summaries from a suite of summarization models that we have manually annotated as factually inconsistent. A model’s factual consistency is then measured according to its accuracy, i.e. the proportion of documents where it assigns a higher score to the factually consistent summary. To validate the usefulness of pasted macro ‘BENCHMARK’, we evaluate 23 large language models ranging from 1B to 176B parameters from six different model families including BLOOM and OPT. We find that existing LLMs generally assign a higher score to factually consistent summaries than to factually inconsistent summaries. However, if the factually inconsistent summaries occur verbatim in the document, then LLMs assign a higher score to these factually inconsistent summaries than factually consistent summaries. We validate design choices in our benchmark including the scoring method and source of distractor summaries.&lt;/abstract&gt;
+    &lt;identifier type="citekey"&gt;tam-etal-2023-evaluating&lt;/identifier&gt;
+    &lt;identifier type="doi"&gt;10.18653/v1/2023.findings-acl.322&lt;/identifier&gt;
+    &lt;location&gt;
+        &lt;url&gt;https://aclanthology.org/2023.findings-acl.322&lt;/url&gt;
+    &lt;/location&gt;
+    &lt;part&gt;
+        &lt;date&gt;2023-07&lt;/date&gt;
+        &lt;extent unit="page"&gt;
+            &lt;start&gt;5220&lt;/start&gt;
+            &lt;end&gt;5255&lt;/end&gt;
+        &lt;/extent&gt;
+    &lt;/part&gt;
+&lt;/mods&gt;
+&lt;/modsCollection&gt;
+</pre><div class="modal-footer pb-1"><a class="btn btn-secondary" href="/2023.findings-acl.322.xml"><i class="fas fa-download pr-2"></i>Download as File</a>
+<button class="btn btn-clipboard btn-primary" data-clipboard-target="#citeModsContent"><i class="far fa-clipboard pr-2"></i>Copy to Clipboard</button></div></div><div class="tab-pane" id="citeEndnote" role="tabpanel"><pre id="citeEndnoteContent" class="bg-light border p-2" style="max-height:50vh">﻿%0 Conference Proceedings
+%T Evaluating the Factual Consistency of Large Language Models Through News Summarization
+%A Tam, Derek
+%A Mascarenhas, Anisha
+%A Zhang, Shiyue
+%A Kwan, Sarah
+%A Bansal, Mohit
+%A Raffel, Colin
+%Y Rogers, Anna
+%Y Boyd-Graber, Jordan
+%Y Okazaki, Naoaki
+%S Findings of the Association for Computational Linguistics: ACL 2023
+%D 2023
+%8 July
+%I Association for Computational Linguistics
+%C Toronto, Canada
+%F tam-etal-2023-evaluating
+%X While large language models (LLMs) have proven to be effective on a large variety of tasks, they are also known to hallucinate information. To measure whether an LLM prefers factually consistent continuations of its input, we propose a new benchmark called FIB (Factual Inconsistency Benchmark) that focuses on the task of summarization. Specifically, our benchmark involves comparing the scores an LLM assigns to a factually consistent versus a factually inconsistent summary for an input news article. For factually consistent summaries, we use human-written reference summaries that we manually verify as factually consistent. To generate summaries that are factually inconsistent, we generate summaries from a suite of summarization models that we have manually annotated as factually inconsistent. A model’s factual consistency is then measured according to its accuracy, i.e. the proportion of documents where it assigns a higher score to the factually consistent summary. To validate the usefulness of pasted macro ‘BENCHMARK’, we evaluate 23 large language models ranging from 1B to 176B parameters from six different model families including BLOOM and OPT. We find that existing LLMs generally assign a higher score to factually consistent summaries than to factually inconsistent summaries. However, if the factually inconsistent summaries occur verbatim in the document, then LLMs assign a higher score to these factually inconsistent summaries than factually consistent summaries. We validate design choices in our benchmark including the scoring method and source of distractor summaries.
+%R 10.18653/v1/2023.findings-acl.322
+%U https://aclanthology.org/2023.findings-acl.322
+%U https://doi.org/10.18653/v1/2023.findings-acl.322
+%P 5220-5255
+
+</pre><div class="modal-footer pb-1"><a class="btn btn-secondary" href="/2023.findings-acl.322.endf"><i class="fas fa-download pr-2"></i>Download as File</a>
+<button class="btn btn-clipboard btn-primary" data-clipboard-target="#citeEndnoteContent"><i class="far fa-clipboard pr-2"></i>Copy to Clipboard</button></div></div><div class="tab-pane" id="citeMarkdown" role="tabpanel"><h5>Markdown (Informal)</h5><p id="citeMarkdownContent" class="text-monospace small bg-light border p-2">[Evaluating the Factual Consistency of Large Language Models Through News Summarization](https://aclanthology.org/2023.findings-acl.322) (Tam et al., Findings 2023)</p><ul class="mt-2"><li><a href="https://aclanthology.org/2023.findings-acl.322">Evaluating the Factual Consistency of Large Language Models Through News Summarization</a> (Tam et al., Findings 2023)</li></ul><h5>ACL</h5><ul class="mt-2"><li id="citeACLstyleContent">Derek Tam, Anisha Mascarenhas, Shiyue Zhang, Sarah Kwan, Mohit Bansal, and Colin Raffel. 2023. <a href="https://aclanthology.org/2023.findings-acl.322">Evaluating the Factual Consistency of Large Language Models Through News Summarization</a>. In <i>Findings of the Association for Computational Linguistics: ACL 2023</i>, pages 5220–5255, Toronto, Canada. Association for Computational Linguistics.</li></ul><div class="modal-footer pb-1"><button type="button" class="btn btn-clipboard btn-primary" data-clipboard-target="#citeMarkdownContent"><i class="far fa-clipboard pr-2"></i>Copy Markdown to Clipboard</button>
+<button type="button" class="btn btn-clipboard btn-primary" data-clipboard-target="#citeACLstyleContent"><i class="far fa-clipboard pr-2"></i>Copy ACL to Clipboard</button></div></div></div></div></div></div></div></section></div><footer class="bg-gradient-light py-2 py-xl-3 mt-3 mt-md-4 mt-xl-5"><div class="container"><p class="text-muted small px-1"><span class="float-right mt-2 ml-2"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a></span>
+ACL materials are Copyright ©&nbsp;1963–2024 ACL; other materials are copyrighted by their respective copyright holders. Materials prior to 2016 here are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 International License</a>. Permission is granted to make copies for the purposes of teaching and research. Materials published in or after 2016 are licensed on a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p><p class="text-muted small px-1">The ACL Anthology is managed and built by the <a href="/info/credits/">ACL Anthology team</a> of volunteers.</p><p class="text-muted small px-1"><i>Site last built on 24 May 2024 at 02:51 UTC with <a href="https://github.com/acl-org/acl-anthology/tree/dbd0ba828245c0c28b8ddad7df7a900255137c5c">commit dbd0ba8</a>.</i></p></div></footer><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script>$(function(){$('[data-toggle="tooltip"]').tooltip(),$("#toggle-all-abstracts")&&($("#toggle-all-abstracts").click(function(){var e=$("#toggle-all-abstracts");e.attr("disabled",!0),e.attr("data-toggle-state")=="hide"?($(".abstract-collapse").collapse("show"),e.attr("data-toggle-state","show")):($(".abstract-collapse").collapse("hide"),e.attr("data-toggle-state","hide")),e.attr("disabled",!1)}),$("#toggle-all-abstracts").attr("disabled",!1))})</script><script src="/js/clipboard.min.js"></script>
+<script>$(document).ready(function(){if(ClipboardJS.isSupported()){success_fn=function(e){var t=$(e.trigger);t.toggleClass("btn-success"),t.children("i").toggleClass("far fa-clipboard fas fa-clipboard-check"),e.clearSelection(),setTimeout(function(){t.toggleClass("btn-success"),t.children("i").toggleClass("far fa-clipboard fas fa-clipboard-check")},2e3)};var e,t=new ClipboardJS(".btn-clipboard");t.on("success",success_fn),$(".btn-clipboard").removeClass("d-none"),e=new ClipboardJS(".btn-clipboard-outside",{text:function(e){var t=e.getAttribute("data-clipboard-target");return $(t).text()}}),e.on("success",success_fn),$(".btn-clipboard-outside").removeClass("d-none")}})</script></body></html>
