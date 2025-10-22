@@ -7,7 +7,7 @@ from paper_utils.pdf_fast_reader import PDFFastReader
 logger = logging.getLogger(__name__)
 
 
-def enhance_paper_info(paper_info):
+def enhance_paper_info(paper_info, get_abstract=True, get_pdf=True):
     """
     为单篇论文增强信息，获取摘要和PDF内容
     
@@ -21,29 +21,30 @@ def enhance_paper_info(paper_info):
     enhanced_info = paper_info.copy()
     
     # 先尝试下载PDF内容
-    if paper_info.get('pub_url'):
-        try:
-            pdf_content = main_download_pdf_contents(
-                paper_info['title'],
-                paper_info['pub_url']
-            )
-            enhanced_info['pdf_content'] = pdf_content
-        except Exception as e:
-            logger.warning(f"下载PDF失败: {paper_info['title']}, 错误: {e}")
-            enhanced_info['pdf_content'] = None
-    
-    # 从PDF中提取摘要
+    if get_pdf:
+        if paper_info.get('pub_url'):
+            try:
+                pdf_content = main_download_pdf_contents(
+                    paper_info['title'],
+                    paper_info['pub_url']
+                )
+                enhanced_info['pdf_content'] = pdf_content
+            except Exception as e:
+                logger.warning(f"下载PDF失败: {paper_info['title']}, 错误: {e}")
+                enhanced_info['pdf_content'] = None
+
     abstract = None
-    
-    # 如果PDF中没有提取到摘要或摘要为空，则调用crawl_all_abstract
-    if not abstract:
-        try:
-            abstract = crawl_all_abstract(
-                paper_info['title'], 
-                paper_info['pub_url']
-            )
-        except Exception as e:
-            logger.warning(f"获取摘要失败: {paper_info['title']}, 错误: {e}")
+    # 从PDF中提取摘要
+    if get_abstract:
+        # 如果PDF中没有提取到摘要或摘要为空，则调用crawl_all_abstract
+        if not abstract:
+            try:
+                abstract = crawl_all_abstract(
+                    paper_info['title'],
+                    paper_info['pub_url']
+                )
+            except Exception as e:
+                logger.warning(f"获取摘要失败: {paper_info['title']}, 错误: {e}")
 
     if not abstract and enhanced_info.get('pdf_content'):
         try:
@@ -116,5 +117,4 @@ def enhance_papers_batch(papers_list, max_workers=5):
                 logger.error(f"处理论文时出错: {paper.get('title', 'Unknown')}, 错误: {e}")
                 # 出错时保留原始论文信息
                 enhanced_papers.append(paper)
-    
     return enhanced_papers

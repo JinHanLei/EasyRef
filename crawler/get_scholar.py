@@ -1,5 +1,9 @@
 import time
 import uuid
+import re
+import bibtexparser
+from apiModels import DBLPBibTeX
+from bibtexparser.bparser import BibTexParser
 from scholarly import scholarly, ProxyGenerator
 from config import PROXY_CONFIG
 from schemas import Paper
@@ -28,7 +32,7 @@ def check_scholar_availability():
         return False
 
 
-def get_google_scholar(keyword, year_low=None, year_high=None, limit_num=50):
+def get_google_scholar(keyword, year_low=None, year_high=None, limit_num=5):
     """
     使用scholarly查询论文
     
@@ -54,12 +58,15 @@ def get_google_scholar(keyword, year_low=None, year_high=None, limit_num=50):
     scholarly.set_timeout(100)
     searched_scholar = scholarly.search_pubs(query=keyword, year_low=year_low, year_high=year_high)
     count = 0
+    fetcher = DBLPBibTeX()
+
     try:
-        for i in searched_scholar:
+        for pub in searched_scholar:
+            filled_pub = pub
             if count >= limit_num:
                 break
             count += 1
-            title = i['bib']['title']
+            title = filled_pub['bib']['title']
             if title.startswith("\"") and title.endswith("\""):
                 title = title[1:-1]
             title = title.strip()
@@ -67,16 +74,28 @@ def get_google_scholar(keyword, year_low=None, year_high=None, limit_num=50):
                 continue
             # 构建基础论文信息，使用Paper schema约束数据结构
             paper_id = str(uuid.uuid4())
+
+            # dblp获取bib
+            bibtex = fetcher.get_bibtex(f"title:{title} year:{filled_pub['bib'].get('pub_year')}")
+            real_bibtex = None
+            if bibtex:
+                bib_db = bibtexparser.loads(bibtex, parser=BibTexParser())
+                bib_title = bib_db.entries[0].get('title')
+                # 只有标题存在且两个标题相同才赋值
+                if bib_title:
+                    if re.sub("\s", "", bib_title.lower()) == re.sub("\s", "", title.lower()):
+                        real_bibtex = bibtex
+
             paper_info = Paper(
                 id=paper_id,
                 title=title,
-                pub_year=i['bib'].get('pub_year'),
-                num_citations=i.get('num_citations', 0),
-                bib=str(i['bib']),
-                pub_url=i.get('pub_url', None),
-                bib_url=i.get('url_scholarbib', None),
-                citedby_url=i.get('citedby_url', None),
-                authors=i['bib'].get('author', None)
+                pub_year=filled_pub['bib'].get('pub_year'),
+                num_citations=filled_pub.get('num_citations', 0),
+                bib=real_bibtex,
+                pub_url=filled_pub.get('pub_url', None),
+                bib_url=filled_pub.get('url_scholarbib', None),
+                citedby_url=filled_pub.get('citedby_url', None),
+                authors=filled_pub['bib'].get('author', None)
             )
 
             papers.append(paper_info.__dict__)
@@ -113,9 +132,10 @@ if __name__ == '__main__':
     keyword = "summarization llm"
     year_low = 2024
     year_high = None
+    limit_num = 5
     save_dir = "data"
 
-    result_generator = get_google_scholar(keyword, year_low, year_high)
+    result_generator = get_google_scholar(keyword, year_low, year_high, limit_num)
     papers_data = []
     count = 0
     for result in result_generator:

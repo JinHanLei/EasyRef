@@ -24,7 +24,7 @@ def health_check():
     """基础健康检查"""
     return jsonify({
         'status': 'healthy',
-        'message': 'EasyCite API服务运行正常',
+        'message': 'Welcome to EasyRef API',
         'timestamp': datetime.now().isoformat()
     })
 

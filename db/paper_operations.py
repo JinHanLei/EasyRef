@@ -308,3 +308,33 @@ class PaperOperations:
         except Exception as e:
             logger.error(f"从数据库加载任务失败: {e}")
         return None
+
+    def search_papers_by_keyword(self, keyword: str) -> List[Dict]:
+        """根据关键词模糊匹配papers表中的论文标题
+        
+        Args:
+            keyword: 搜索关键词
+            
+        Returns:
+            List[Dict]: 匹配的论文列表
+        """
+        try:
+            # 构建查询条件，只模糊匹配标题
+            if keyword:
+                result = (self.supabase.table('papers')
+                         .select('*')
+                         .ilike('title', f'%{keyword}%')
+                         .order('created_at', desc=True)
+                         .execute())
+            else:
+                result = (self.supabase.table('papers')
+                         .select('*')
+                         .order('created_at', desc=True)
+                         .execute())
+            
+            papers_data = result.data if result.data else []
+            return papers_data
+            
+        except Exception as e:
+            logger.error(f"根据关键词搜索论文失败: {e}")
+            raise e

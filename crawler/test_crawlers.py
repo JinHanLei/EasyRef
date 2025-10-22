@@ -32,7 +32,7 @@ def test_crawlers():
     keyword = "attention is all you need"
     year_low = 2016
     year_high = 2024
-    limit_num = 1
+    limit_num = 2
     
     logger.info(f"开始测试爬虫功能，关键词: {keyword}，年份: {year_low}-{year_high}，数量: {limit_num}")
     
